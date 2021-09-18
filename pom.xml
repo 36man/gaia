@@ -185,21 +185,21 @@
     <!-- repository and deploy -->
     <repositories>
         <repository>
-            <id>nexus</id>
-            <name>nexus</name>
-            <url>rdc-releases::default::https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>
+            <id>rdc</id>
+            <name>rdc</name>
+            <url>https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>
         </repository>
     </repositories>
     <distributionManagement>
         <repository>
-            <id>nexus-releases</id>
-            <name>Nexus Releases</name>
-            <url>rdc-releases::default::https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>
+            <id>rdc-releases</id>
+            <name>rdc Releases</name>
+            <url>https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>
         </repository>
         <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus Snapshots</name>
-            <url>rdc-snapshots::default::https://packages.aliyun.com/maven/repository/2122710-snapshot-ZBo1Xu/</url>
+            <id>rdc-snapshots</id>
+            <name>rdc Snapshots</name>
+            <url>https://packages.aliyun.com/maven/repository/2122710-snapshot-ZBo1Xu/</url>
         </snapshotRepository>
     </distributionManagement>
 
