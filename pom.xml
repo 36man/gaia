@@ -7,6 +7,9 @@
     <groupId>org.bravo</groupId>
     <artifactId>gaia</artifactId>
     <version>1.0.1-SNAPSHOT</version>
+    <modules>
+        <module>gaia-commons</module>
+    </modules>
 
     <packaging>pom</packaging>
 
@@ -20,6 +23,7 @@
         <commons.compress.version>1.21</commons.compress.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <commons.text.version>1.9</commons.text.version>
+        <guava.version>30.1.1-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -72,6 +76,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
                 <version>${commons.text.version}</version>
+            </dependency>
+            <!-- google guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
