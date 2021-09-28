@@ -12,7 +12,7 @@ public enum ErrorCodeType {
 
     BIZ_ERROR("1", "业务错误"),
     SYS_ERROR("2", "系统错误"),
-    THIRD_ERROR("3", "第三方错误");
+    ;
 
     @Setter
     private String code;
