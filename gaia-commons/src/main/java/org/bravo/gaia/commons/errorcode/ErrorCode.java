@@ -1,13 +1,14 @@
 package org.bravo.gaia.commons.errorcode;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * 系统错误码
+ * 错误码
  * <p>错误码码位总共17位，不多不少，必须满足；
  * ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────────┬────────┬───────┐
  * │ 1  │  2 │ 3  │ 4  │ 5  │ 6  │ 7  │ 8  │ 9  │ 10 │ 11 │ 12 │ 13 │ 14 │   15   │   16   │   17  │
@@ -15,7 +16,7 @@ import java.io.Serializable;
  * │                   │              │              │                   │        │        │       │
  * │   业务线的名称      │  业务域的名称  │   业务模块名称 │     错误码序列号    │ 码类型  │ 扩展位  │ 扩展位 │
  * └───────────────────┴──────────────┴──────────────┴───────────────────┴────────┴────────┴───────┴
- *
+ * 通常来说，应用程序使用错误码的方式是定义一个枚举类（这个枚举类需要实现IErrorCode这个接口），在该枚举类中定义错误码(枚举)并使用这个枚举
  * @author lijian
  * @since 2021/09/22
  */
@@ -57,6 +58,7 @@ public class ErrorCode implements Serializable {
     private String extendSlot;
 
     @Getter
+    @Setter
     /** 错误描述 */
     private String errorDesc;
 
@@ -99,13 +101,12 @@ public class ErrorCode implements Serializable {
         //错误检查
         check();
 
-        //组装错误码字符串
-        return fetchResultCodeString();
+        return str();
     }
 
     @Override
     public int hashCode() {
-        return this.fetchResultCodeString().hashCode();
+        return this.str().hashCode();
     }
 
     @Override
@@ -116,7 +117,55 @@ public class ErrorCode implements Serializable {
         if (obj == null) {
             return false;
         }
-        return StringUtils.equals(this.fetchResultCodeString(), (((ErrorCode) obj).fetchResultCodeString()));
+        return StringUtils.equals(this.str(), (((ErrorCode) obj).str()));
+    }
+
+    /**
+     * 返回错误码字符串的格式
+     */
+    public String str() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.bizUnitCode);
+        sb.append(this.bizDomainCode);
+        sb.append(this.bizModuleCode);
+        sb.append(this.codeSequence);
+        sb.append(this.codeType.toString());
+        sb.append(this.extendSlot);
+        return sb.toString();
+    }
+
+    /**
+     * 返回errorCode的一个拷贝
+     * @return 返回拷贝
+     */
+    public ErrorCode copy() {
+        return new ErrorCode(this.bizUnitCode, this.bizDomainCode, this.bizModuleCode,
+                this.codeSequence, this.codeType, this.errorDesc);
+    }
+
+    /**
+     * 返回具有可读性的错误码字符串的格式
+     */
+    public String prettyStr() {
+        byte defaultKeySize = 15;
+        String LF = "\n";
+        String SPLIT = "=\t";
+        String bizUnitCodeKey = StringUtils.rightPad("bizUnitCode", defaultKeySize);
+        String bizDomainCodeKey = StringUtils.rightPad("bizDomainCode", defaultKeySize);
+        String bizModuleCodeKey = StringUtils.rightPad("bizModuleCode", defaultKeySize);
+        String codeSequenceKey = StringUtils.rightPad("codeSequence", defaultKeySize);
+        String codeTypeKey = StringUtils.rightPad("codeType", defaultKeySize);
+        String extendSlotKey = StringUtils.rightPad("extendSlot", defaultKeySize);
+        String descKey = StringUtils.rightPad("errorDesc", defaultKeySize);
+        String prettyStr = "errorCode : " + str() + LF + "-----------------------------" + LF;
+        prettyStr += bizUnitCodeKey + SPLIT + this.bizUnitCode + LF;
+        prettyStr += bizDomainCodeKey + SPLIT + this.bizDomainCode + LF;
+        prettyStr += bizModuleCodeKey + SPLIT + this.bizModuleCode + LF;
+        prettyStr += codeSequenceKey + SPLIT + this.codeSequence + LF;
+        prettyStr += codeTypeKey + SPLIT + this.codeSequence + LF;
+        prettyStr += extendSlotKey + SPLIT + this.extendSlot + LF;
+        prettyStr += descKey + SPLIT + this.errorDesc + LF;
+        return prettyStr;
     }
 
     // ~~~ 内部方法
@@ -165,20 +214,6 @@ public class ErrorCode implements Serializable {
         }
     }
 
-    /**
-     * 返回错误码字符串的格式
-     */
-    private String fetchResultCodeString() {
-        StringBuilder sb = new StringBuilder();
 
-        sb.append(this.bizUnitCode);
-        sb.append(this.bizDomainCode);
-        sb.append(this.bizModuleCode);
-        sb.append(this.codeSequence);
-        sb.append(this.codeType.toString());
-        sb.append(this.extendSlot);
-
-        return sb.toString();
-    }
 
 }
