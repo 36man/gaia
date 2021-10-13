@@ -36,13 +36,10 @@ public class MultiCurrencyMoneyDTO extends BaseDTO {
         if (multiCurrencyMoney == null) {
             return null;
         }
-
         MultiCurrencyMoneyDTO multiCurrencyMoneyVO = new MultiCurrencyMoneyDTO();
-
         multiCurrencyMoneyVO.setAmount(multiCurrencyMoney.getAmount().toString());
         multiCurrencyMoneyVO.setCurrency(multiCurrencyMoney.getCurrencyValue());
         multiCurrencyMoneyVO.setCent(String.valueOf(multiCurrencyMoney.getCent()));
-
         return multiCurrencyMoneyVO;
     }
 
@@ -53,14 +50,12 @@ public class MultiCurrencyMoneyDTO extends BaseDTO {
         if (multiCurrencyMoneyVO == null) {
             return null;
         }
-
         if (StringUtils.isEmpty(multiCurrencyMoneyVO.getCent())) {
             throw new IllegalArgumentException("cent is null");
         }
         if (StringUtils.isEmpty(multiCurrencyMoneyVO.getCurrency())) {
             throw new IllegalArgumentException("currency is null");
         }
-
         return new MultiCurrencyMoney(Long.parseLong(multiCurrencyMoneyVO.getCent()),
                 multiCurrencyMoneyVO.getCurrency());
     }
