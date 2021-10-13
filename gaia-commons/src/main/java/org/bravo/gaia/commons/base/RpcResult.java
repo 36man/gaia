@@ -3,15 +3,12 @@ package org.bravo.gaia.commons.base;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import org.bravo.gaia.commons.annotation.Sensitive;
 import org.bravo.gaia.commons.context.ErrorContext;
 import org.bravo.gaia.commons.errorcode.ErrorCode;
+import org.bravo.gaia.commons.util.ToStringUtil;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.lang.reflect.Field;
 
 /**
  * rpc结果类
@@ -130,15 +127,7 @@ public class RpcResult<T> implements Serializable {
 
     @Override
     public String toString() {
-        return new ReflectionToStringBuilder(
-                this, ToStringStyle.SHORT_PREFIX_STYLE) {
-            @Override
-            protected boolean accept(Field field) {
-                Sensitive sensitive = field.getAnnotation(Sensitive.class);
-                //todo do sensitive logic
-                return true;
-            }
-        }.toString();
+        return ToStringUtil.obj2String(this);
     }
 
 }

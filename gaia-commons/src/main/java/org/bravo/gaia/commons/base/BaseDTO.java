@@ -1,12 +1,9 @@
 package org.bravo.gaia.commons.base;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import org.bravo.gaia.commons.annotation.Sensitive;
+import org.bravo.gaia.commons.util.ToStringUtil;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.lang.reflect.Field;
 
 /**
  * DTO基类
@@ -20,14 +17,6 @@ public class BaseDTO implements Serializable {
 
     @Override
     public String toString() {
-        return new ReflectionToStringBuilder(
-                this, ToStringStyle.SHORT_PREFIX_STYLE) {
-            @Override
-            protected boolean accept(Field field) {
-                Sensitive sensitive = field.getAnnotation(Sensitive.class);
-                //todo do sensitive logic
-                return true;
-            }
-        }.toString();
+        return ToStringUtil.obj2String(this);
     }
 }
