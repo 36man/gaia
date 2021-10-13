@@ -11,9 +11,6 @@ import org.bravo.gaia.commons.errorcode.ErrorCode;
  */
 public class HttpResult<T> {
 
-    public final static String ERROR_CODE = "code";
-    public final static String ERROR_MSG = "msg";
-    public final static String DATA = "data";
     public final static String DEFAULT_SUCCESS_CODE = "200";
     public final static String DEFAULT_FAIL_CODE = "200";
     public final static String DEFAULT_SUCCESS_MSG = "success";
