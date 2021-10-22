@@ -3,9 +3,11 @@ package org.bravo.gaia.commons.context;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.bravo.gaia.commons.constant.DateConstant;
 import org.bravo.gaia.commons.errorcode.ErrorCode;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +22,7 @@ import java.util.Stack;
  */
 public class ErrorContext implements Serializable {
 
+    @Serial
     private static final long   serialVersionUID = -2191953263464121647L;
 
     /**
@@ -28,6 +31,8 @@ public class ErrorContext implements Serializable {
     @Setter
     @Getter
     private Stack<ErrorCodeWrapper>    errorStack       = new Stack<>();
+
+    private String topErrCode;
 
     private static final String SPLIT            = "\n";
 
@@ -111,6 +116,17 @@ public class ErrorContext implements Serializable {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Get the top error code with string style
+     */
+    public String getTopErrCode() {
+        ErrorCode currentErrorCode = getCurrentErrorCode();
+        if (currentErrorCode != null) {
+            return currentErrorCode.str();
+        }
+        return StringUtils.EMPTY;
     }
 
 }
