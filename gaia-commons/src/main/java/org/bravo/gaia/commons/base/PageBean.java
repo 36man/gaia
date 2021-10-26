@@ -1,6 +1,8 @@
 package org.bravo.gaia.commons.base;
 
 
+import org.bravo.gaia.commons.util.ToStringUtil;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
@@ -112,5 +114,10 @@ public class PageBean<T> implements Serializable {
             return (this.totalCount - 1) / this.pageSize + 1;
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringUtil.obj2String(this);
     }
 }
