@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 import org.bravo.gaia.commons.money.MultiCurrencyMoney;
+import org.bravo.gaia.commons.util.ToStringUtil;
 
 import java.io.Serial;
 
@@ -62,6 +63,6 @@ public class MultiCurrencyMoneyDTO extends BaseDTO {
 
     @Override
     public String toString() {
-        return super.toString();
+        return ToStringUtil.obj2String(this);
     }
 }
