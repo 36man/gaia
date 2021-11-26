@@ -3,7 +3,6 @@ package org.bravo.gaia.commons.errorcode;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -24,7 +23,6 @@ public class ErrorCode implements Serializable {
     /**
      * serialVersionUID
      */
-    @Serial
     private static final long serialVersionUID = 2377988816412754062L;
 
     /**
