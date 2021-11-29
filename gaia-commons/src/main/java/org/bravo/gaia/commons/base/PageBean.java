@@ -3,7 +3,6 @@ package org.bravo.gaia.commons.base;
 
 import org.bravo.gaia.commons.util.ToStringUtil;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,7 +12,6 @@ import java.util.List;
  */
 public class PageBean<T> implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = -8685223070239741295L;
     /**
      * 当前页

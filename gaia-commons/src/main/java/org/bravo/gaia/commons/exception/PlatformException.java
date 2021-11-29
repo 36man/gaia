@@ -6,7 +6,6 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.bravo.gaia.commons.context.ErrorContext;
 import org.bravo.gaia.commons.errorcode.ErrorCode;
 
-import java.io.Serial;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,7 +25,6 @@ import java.util.regex.Pattern;
  */
 public class PlatformException extends RuntimeException {
 
-    @Serial
     private static final long serialVersionUID = -5143695406381565749L;
 
     /**

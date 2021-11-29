@@ -6,8 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.bravo.gaia.commons.money.MultiCurrencyMoney;
 import org.bravo.gaia.commons.util.ToStringUtil;
 
-import java.io.Serial;
-
 /**
  * 多币种金额DTO
  * @author lijian
@@ -18,7 +16,6 @@ import java.io.Serial;
 public class MultiCurrencyMoneyDTO extends BaseDTO {
 
     /** serialVersionUID */
-    @Serial
     private static final long serialVersionUID = 3617732088592394682L;
 
     /** 金额 */

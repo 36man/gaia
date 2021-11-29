@@ -2,7 +2,6 @@ package org.bravo.gaia.commons.base;
 
 import org.bravo.gaia.commons.util.ToStringUtil;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -12,7 +11,6 @@ import java.io.Serializable;
  */
 public class BaseDTO implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 781768640533536838L;
 
     @Override

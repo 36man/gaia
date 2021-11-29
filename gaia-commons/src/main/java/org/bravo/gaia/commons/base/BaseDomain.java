@@ -2,7 +2,6 @@ package org.bravo.gaia.commons.base;
 
 import org.bravo.gaia.commons.util.ToStringUtil;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -13,7 +12,6 @@ import java.io.Serializable;
 public abstract class BaseDomain implements Serializable {
 
     /** serialVersionUID */
-    @Serial
     private static final long serialVersionUID = 8077842703435876062L;
 
     @Override

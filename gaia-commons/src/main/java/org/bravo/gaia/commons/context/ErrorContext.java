@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.bravo.gaia.commons.constant.DateConstant;
 import org.bravo.gaia.commons.errorcode.ErrorCode;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,7 +21,6 @@ import java.util.Stack;
  */
 public class ErrorContext implements Serializable {
 
-    @Serial
     private static final long   serialVersionUID = -2191953263464121647L;
 
     /**

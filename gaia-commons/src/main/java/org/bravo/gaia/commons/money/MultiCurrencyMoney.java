@@ -2,9 +2,9 @@ package org.bravo.gaia.commons.money;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Currency;
 
 
@@ -47,7 +47,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
     /**
      * Comment for <code>serialVersionUID</code>
      */
-    @Serial
     private static final long  serialVersionUID      = 2689880266509311867L;
 
     /**
@@ -59,7 +58,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      * 缺省的取整模式，为<code>BigDecimal.ROUND_HALF_EVEN
      * （四舍五入，当小数为0.5时，则取最近的偶数）。
      */
-    public static final int    DEFAULT_ROUNDING_MODE = BigDecimal.ROUND_HALF_EVEN;
+    public static final RoundingMode DEFAULT_ROUNDING_MODE = RoundingMode.HALF_EVEN;
 
     /**
      * 一组可能的元/分换算比例。
@@ -196,7 +195,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      * @param currency 币种。
      * @param roundingMode 取整模式。
      */
-    public MultiCurrencyMoney(String amount, Currency currency, int roundingMode) {
+    public MultiCurrencyMoney(String amount, Currency currency, RoundingMode roundingMode) {
         this(new BigDecimal(amount), currency, roundingMode);
     }
 
@@ -331,7 +330,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      * @param roundingMode 取整模式
      *
      */
-    public MultiCurrencyMoney(BigDecimal amount, int roundingMode) {
+    public MultiCurrencyMoney(BigDecimal amount, RoundingMode roundingMode) {
         this(amount, Currency.getInstance(DEFAULT_CURRENCY_CODE), roundingMode);
     }
 
@@ -360,7 +359,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      * @param currency 币种。
      * @param roundingMode 取整模式。
      */
-    public MultiCurrencyMoney(BigDecimal amount, Currency currency, int roundingMode) {
+    public MultiCurrencyMoney(BigDecimal amount, Currency currency, RoundingMode roundingMode) {
         this.setCurrency(currency);
         this.cent = rounding(amount.movePointRight(currency.getDefaultFractionDigits()),
             roundingMode);
@@ -714,7 +713,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      *
      * @return 相乘后的结果。
      */
-    public MultiCurrencyMoney multiply(BigDecimal val, int roundingMode) {
+    public MultiCurrencyMoney multiply(BigDecimal val, RoundingMode roundingMode) {
         BigDecimal newCent = BigDecimal.valueOf(cent).multiply(val);
 
         return newMoneyWithSameCurrency(rounding(newCent, roundingMode));
@@ -733,7 +732,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      *
      * @return 累乘后的结果。
      */
-    public MultiCurrencyMoney multiplyBy(BigDecimal val, int roundingMode) {
+    public MultiCurrencyMoney multiplyBy(BigDecimal val, RoundingMode roundingMode) {
         BigDecimal newCent = BigDecimal.valueOf(cent).multiply(val);
 
         this.cent = rounding(newCent, roundingMode);
@@ -802,7 +801,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      *
      * @return 相除后的结果。
      */
-    public MultiCurrencyMoney divide(BigDecimal val, int roundingMode) {
+    public MultiCurrencyMoney divide(BigDecimal val, RoundingMode roundingMode) {
         BigDecimal newCent = BigDecimal.valueOf(cent).divide(val, roundingMode);
 
         return newMoneyWithSameCurrency(CheckOverflow.bigDecimalChecked(newCent));
@@ -837,7 +836,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      *
      * @return 累除后的结果。
      */
-    public MultiCurrencyMoney divideBy(BigDecimal val, int roundingMode) {
+    public MultiCurrencyMoney divideBy(BigDecimal val, RoundingMode roundingMode) {
         BigDecimal newCent = BigDecimal.valueOf(cent).divide(val, roundingMode);
 
         this.cent = CheckOverflow.bigDecimalChecked(newCent);
@@ -1040,7 +1039,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      *
      * @return 取整后的long型值
      */
-    protected long rounding(BigDecimal val, int roundingMode) {
+    protected long rounding(BigDecimal val, RoundingMode roundingMode) {
         BigDecimal newVal = val.setScale(0, roundingMode);
         return CheckOverflow.bigDecimalChecked(newVal);
     }

@@ -7,7 +7,6 @@ import org.bravo.gaia.commons.context.ErrorContext;
 import org.bravo.gaia.commons.errorcode.ErrorCode;
 import org.bravo.gaia.commons.util.ToStringUtil;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -20,7 +19,6 @@ import java.io.Serializable;
  */
 public class RpcResult<T> implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = -8520269513099293464L;
 
     @Setter
