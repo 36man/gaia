@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring.boot.version>2.5.4</spring.boot.version>
+        <spring.boot.version>2.6.0</spring.boot.version>
         <commons.lang.version>3.12.0</commons.lang.version>
         <commons.io.version>2.11.0</commons.io.version>
         <commons.codec.version>1.15</commons.codec.version>
@@ -24,7 +24,7 @@
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <commons.text.version>1.9</commons.text.version>
         <guava.version>30.1.1-jre</guava.version>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencyManagement>
