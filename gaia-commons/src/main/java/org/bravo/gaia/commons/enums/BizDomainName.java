@@ -9,6 +9,9 @@ import lombok.Getter;
  */
 public enum BizDomainName {
 
+    /** 框架级别使用的业务域(非特定业务域) */
+    GENERIC("GEC", "泛化"),
+
     COMMON("COM", "公共域"),
 
     TRANSACTION("TRT", "交易域"),

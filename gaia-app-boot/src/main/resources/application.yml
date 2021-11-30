@@ -1,0 +1,18 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  banner:
+    location: banner.txt
+  mvc:
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations: classpath:/platform/,classpath:/static/,/
+server:
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+gaia-version: 1.0.1-SNAPSHOT

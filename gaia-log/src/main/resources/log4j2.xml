@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{MM/dd HH:mm:ss} [%level] [%thread] [%logger{15}] \: %m%n"/>
+        </Console>
+        <RollingFile name="default" fileName="logs/app.log"
+                     filePattern="logs/app-%d{yyyyMMdd}-%i.log.gz">
+            <PatternLayout pattern="%d{MM/dd HH:mm:ss} [%level] [%thread] [%logger{15}] \: %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="300 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30">
+                <Delete basePath="logs" maxDepth="2">
+                    <IfLastModified age="15d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <Async name="defaultAsync">
+            <AppenderRef ref="default"/>
+        </Async>
+
+        <RollingFile name="errors" fileName="logs/error.log"
+                     filePattern="logs/app-%d{yyyyMMdd}-%i.log.gz">
+            <PatternLayout pattern="%d{MM/dd HH:mm:ss} [%level] [%thread] [%logger{15}] \: %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="300 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30">
+                <Delete basePath="logs" maxDepth="2">
+                    <IfLastModified age="15d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <Async name="errorsAsync">
+            <AppenderRef ref="errors"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Logger name="errors" level="ERROR">
+            <AppenderRef ref="errorsAsync"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="defaultAsync"/>
+        </Root>
+    </Loggers>
+</Configuration>
