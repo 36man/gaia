@@ -11,12 +11,15 @@
         <module>gaia-commons</module>
         <module>gaia-app-boot</module>
         <module>gaia-log</module>
+        <module>gaia-mybatis</module>
+        <module>gaia-rpc</module>
+        <module>gaia-datasource</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
-        <spring.boot.version>2.6.0</spring.boot.version>
+        <spring.boot.version>2.6.1</spring.boot.version>
         <commons.lang.version>3.12.0</commons.lang.version>
         <commons.io.version>2.11.0</commons.io.version>
         <commons.codec.version>1.15</commons.codec.version>

@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 public enum BizUnitName {
 
-    GENERIC("COMMON", "泛化系统"),
+    GENERIC("GENC", "泛化系统"),
 
     MAIN_E_MERCHANT("MAIN", "国内电商"),
 
