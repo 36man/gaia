@@ -12,7 +12,7 @@
     <artifactId>gaia-rpc</artifactId>
 
     <properties>
-        <dubbo.version>2.7.8</dubbo.version>
+        <dubbo.version>3.0.2.1</dubbo.version>
         <javassist.version>3.23.1-GA</javassist.version>
     </properties>
 
