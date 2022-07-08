@@ -1,4 +1,7 @@
 spring:
+  output:
+    ansi:
+      enabled: always
   main:
     allow-bean-definition-overriding: true
   banner:
