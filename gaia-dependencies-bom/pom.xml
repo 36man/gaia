@@ -58,7 +58,7 @@
 
             <dependency>
                 <groupId>org.bravo</groupId>
-                <artifactId>gaia-dependencies-bom</artifactId>
+                <artifactId>gaia-dependencies</artifactId>
                 <version>${gaia.dependencies.version}</version>
             </dependency>
         </dependencies>
