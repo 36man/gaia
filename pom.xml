@@ -16,7 +16,6 @@
         <module>gaia-rpc</module>
         <module>gaia-datasource</module>
         <module>gaia-dependencies</module>
-        <module>gaia-dependencies-bom</module>
         <module>gaia-id</module>
     </modules>
 
