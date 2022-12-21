@@ -5,7 +5,8 @@
     <parent>
         <artifactId>gaia</artifactId>
         <groupId>org.bravo</groupId>
-        <version>2.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -37,12 +38,10 @@
         <dependency>
             <groupId>org.bravo</groupId>
             <artifactId>gaia-commons</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.bravo</groupId>
             <artifactId>gaia-log</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

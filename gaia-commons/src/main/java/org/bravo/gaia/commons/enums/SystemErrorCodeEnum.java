@@ -24,30 +24,38 @@ public enum SystemErrorCodeEnum implements IErrorCode {
     /** 上传文件太大 */
     FILE_SIZE_EXCEED(BizUnitName.GENERIC.getCode(), BizDomainName.GENERIC.getCode(), SystemConstant.GENERIC_MODULE_NAME,
             "0002", ErrorCodeType.BIZ_ERROR, "上传文件太大, 请检查"),
-    ;
 
+    SYSTEM_404(BizUnitName.GENERIC.getCode(), BizDomainName.GENERIC.getCode(),
+            SystemConstant.GENERIC_MODULE_NAME, "0003",ErrorCodeType.SYS_ERROR, "您访问资源不存在"),
 
+    SYSTEM_403(BizUnitName.GENERIC.getCode(), BizDomainName.GENERIC.getCode(),
+            SystemConstant.GENERIC_MODULE_NAME, "0004", ErrorCodeType.SYS_ERROR,"您访问的资源不可用,服务器拒绝处理"),
 
-    
+    SYSTEM_405(BizUnitName.GENERIC.getCode(), BizDomainName.GENERIC.getCode(),
+            SystemConstant.GENERIC_MODULE_NAME, "0005", ErrorCodeType.SYS_ERROR,"您访问的资源拒绝,访问方法不被允许"),
+
+    SYSTEM_400(BizUnitName.GENERIC.getCode(), BizDomainName.GENERIC.getCode(),
+            SystemConstant.GENERIC_MODULE_NAME, "0006", ErrorCodeType.SYS_ERROR,"您访问的资源请求无效");;
+
     /** 错误码等级 */
-    private String    bizUnitCode;
+    private String        bizUnitCode;
 
     /** 错误码类型 */
-    private String    bizDomainCode;
+    private String        bizDomainCode;
 
     /** 系统平台 */
-    private String    bizModuleCode;
+    private String        bizModuleCode;
 
     /** 错误码编号 */
-    private String    codeSequence;
+    private String        codeSequence;
 
     private ErrorCodeType codeType;
 
-    private ErrorCode errorCode;
+    private ErrorCode     errorCode;
 
     @Getter
     /** 错误描述 */
-    private String errorDesc;
+    private String        errorDesc;
 
     /**
      * 构造体
