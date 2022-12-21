@@ -61,6 +61,7 @@
                 <artifactId>gaia-dependencies</artifactId>
                 <version>${gaia.dependencies.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
