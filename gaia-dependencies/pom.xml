@@ -12,6 +12,7 @@
 
         <spring.boot.version>2.6.9</spring.boot.version>
         <mybatis.plus.starter.version>3.5.2</mybatis.plus.starter.version>
+        <druid.version>1.2.15</druid.version>
 
         <vesta.version>0.0.1</vesta.version>
         <dubbo.version>3.0.7</dubbo.version>
@@ -154,6 +155,12 @@
             </dependency>
 
             <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.robert.vesta</groupId>
                 <artifactId>vesta-service</artifactId>
                 <version>${vesta.version}</version>
@@ -219,127 +226,48 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring.boot.version}</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
                     <version>${flatten-maven-plugin.version}</version>
-                    <configuration>
-                        <updatePomFile>true</updatePomFile>
-                        <flattenMode>oss</flattenMode>
-                        <embedBuildProfileDependencies>true</embedBuildProfileDependencies>
-                        <pomElements>
-                            <distributionManagement>remove</distributionManagement>
-                            <repositories>remove</repositories>
-                        </pomElements>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>flatten</id>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>flatten</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>flatten-clean</id>
-                            <phase>clean</phase>
-                            <goals>
-                                <goal>clean</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>${maven.jar.version}</version>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            </manifest>
-                        </archive>
-                    </configuration>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven.compiler.version}</version>
-                    <configuration>
-                        <source>11</source>
-                        <target>11</target>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>${maven.resources.version}</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven.javadoc.version}</version>
-                    <configuration>
-                        <charset>UTF-8</charset>
-                        <encoding>UTF-8</encoding>
-                        <docencoding>UTF-8</docencoding>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                            <configuration>
-                                <!-- ignore @param和@return warning -->
-                                <additionalJOption>-Xdoclint:none</additionalJOption>
-                            </configuration>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${maven.source.version}</version>
-                    <configuration>
-                        <attach>true</attach>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.version}</version>
-                    <configuration>
-                        <skipTests>false</skipTests>
-                    </configuration>
                 </plugin>
 
             </plugins>

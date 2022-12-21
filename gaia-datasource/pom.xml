@@ -12,10 +12,6 @@
 
     <artifactId>gaia-datasource</artifactId>
 
-    <properties>
-        <druid-version>1.2.8</druid-version>
-    </properties>
-
     <description>
         数据源集成组件，包装了druid
         1: 当datasource.test=true时,将使用h2数据库，在当前工作目录data下生成platform的h2数据库文件
@@ -67,7 +63,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-version}</version>
         </dependency>
     </dependencies>
 

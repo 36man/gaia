@@ -25,16 +25,16 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 /**
  * @author lijian
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class MybatisConfig {
 
-	public static final String DEFAULT_BASE_PACKAGE  = "**.dao";
+    public static final String DEFAULT_MAPPER_SCAN_PACKAGE = "**.dao,**.repository";
 
 	@Bean
 	public MybatisPlusInterceptor mybatisPlusInterceptor(Set<InnerInterceptor> interceptors){
 		List<InnerInterceptor> defaultInterceptor = new ArrayList<>();
-		defaultInterceptor.add(new PaginationInnerInterceptor());
 		defaultInterceptor.add(new OptimisticLockerInnerInterceptor());
+		defaultInterceptor.add(new PaginationInnerInterceptor());
 
 		Set<InnerInterceptor> innerInterceptors = Optional.ofNullable(interceptors).orElseGet(HashSet::new);
 		innerInterceptors.addAll(defaultInterceptor);
@@ -51,7 +51,7 @@ public class MybatisConfig {
 
 		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
 
-		mybatisScanPackage = StringUtils.isBlank(mybatisScanPackage) ? DEFAULT_BASE_PACKAGE
+		mybatisScanPackage = StringUtils.isBlank(mybatisScanPackage) ? DEFAULT_MAPPER_SCAN_PACKAGE
 				: mybatisScanPackage;
 
 		mapperScannerConfigurer.setBasePackage(mybatisScanPackage);

@@ -29,7 +29,7 @@ public class VestaIdGenerator implements IdGenerator<Long>, InitializingBean {
 
         this.idService = idServiceFactoryBean.getObject();
 
-        Preconditions.checkArgument(idService == null, "idService is null");
+        Preconditions.checkArgument(idService != null, "idService is null");
     }
 
     @Override

@@ -13,7 +13,7 @@ import javax.servlet.MultipartConfigElement;
 /**
  * 文件上传大小异常拦截处理
  * @author hejianbing
- * @version @Id: CustomExceptionController.java, v 0.1 2019年04月20日 09:54 hejianbing Exp $
+ * @version @Id: MultipartExceptionAdvice.java, v 0.1 2019年04月20日 09:54 hejianbing Exp $
  */
 @ControllerAdvice
 public class MultipartExceptionAdvice {
