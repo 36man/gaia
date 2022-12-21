@@ -1,7 +1,3 @@
-/**
- * share.org
- * Copyright (c) 2018-2019 ALL Rights Reserved
- */
 package org.bravo.gaia.id.enums;
 
 /**
