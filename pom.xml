@@ -23,7 +23,7 @@
 
     <properties>
         <revision>2.0.1-SNAPSHOT</revision>
-        <gaia.dependencies.version>2.0.1-SNAPSHOT</gaia.dependencies.version>
+        <gaia.bom.version>2.0.1-SNAPSHOT</gaia.bom.version>
     </properties>
 
     <dependencyManagement>
@@ -73,7 +73,7 @@
             <dependency>
                 <groupId>org.bravo</groupId>
                 <artifactId>gaia-dependencies</artifactId>
-                <version>${gaia.dependencies.version}</version>
+                <version>${gaia.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
