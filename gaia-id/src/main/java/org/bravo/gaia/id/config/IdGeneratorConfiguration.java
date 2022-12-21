@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author jojocodex
- * @version @Id: IdGeneratorAutoConfiguration.java, v 0.1 2022年12月21日 09:43 jojocodex Exp $
+ * @version @Id: IdGeneratorConfiguration.java, v 0.1 2022年12月21日 09:43 jojocodex Exp $
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(IdProperties.class)
