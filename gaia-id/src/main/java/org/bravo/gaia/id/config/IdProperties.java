@@ -28,7 +28,6 @@ public class IdProperties {
     @Setter
     public static class Vesta {
         public long type      = 1;
-
         public long genMethod = 0;
         public long machine = RandomUtils.nextLong(1L, 1024L);
     }
