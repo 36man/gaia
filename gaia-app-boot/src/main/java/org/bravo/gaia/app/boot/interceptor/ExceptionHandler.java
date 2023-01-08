@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 /**
  * 定义MVC的异常处理，当MVC出现异常时候，此类中的方法进行全局异常捕获并进行处理
@@ -27,7 +28,13 @@ public class ExceptionHandler implements HandlerExceptionResolver {
     @Value("${web.errorPage._403:/403}")
     private String errorPage403;
 
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
+
+    public ExceptionHandler(ObjectMapper objectMapper) {
+
+        this.objectMapper = Objects.isNull(objectMapper) ? new ObjectMapper() : objectMapper;
+    }
+
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
@@ -63,7 +70,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         return modelAndView;
     }
 
-    private static void sendMessage(HttpServletResponse response, HttpResult httpResult) {
+    private void sendMessage(HttpServletResponse response, HttpResult httpResult) {
         response.setHeader(WebConstant.CONTENT_TYPE, WebConstant.CONTEXT_TYPE_JSON);
         try {
             String errorMessageJson = objectMapper.writeValueAsString(httpResult);

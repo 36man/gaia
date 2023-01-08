@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ContainerViewController {
+public class ContainerErrorController {
 
     @Value("${web.errorPage._400:/400}")
     private String errorPage400;

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
  */
 
 @AutoConfigureBefore(WebMvcAutoConfiguration.class)
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class I18NAutoConfiguration {
     @Bean
     public MessageSource messageSource() {
