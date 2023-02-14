@@ -22,54 +22,14 @@
     <packaging>pom</packaging>
 
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <revision>2.0.1-SNAPSHOT</revision>
         <gaia.dependencies.version>2.0.1-SNAPSHOT</gaia.dependencies.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-app-boot</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-commons</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-datasource</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-log</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-mybatis</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-rpc</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bravo</groupId>
-                <artifactId>gaia-id</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.bravo</groupId>
                 <artifactId>gaia-dependencies</artifactId>
@@ -93,6 +53,31 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>oss</flattenMode>
+                    <embedBuildProfileDependencies>true</embedBuildProfileDependencies>
+                    <pomElements>
+                        <distributionManagement>remove</distributionManagement>
+                        <repositories>remove</repositories>
+                    </pomElements>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten-clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- build jar plugin -->
@@ -129,24 +114,24 @@
     </build>
 
     <!-- repository and deploy -->
-    <repositories>
-        <repository>
-            <id>rdc</id>
-            <name>rdc</name>
-            <url>https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>
-        </repository>
-    </repositories>
-    <distributionManagement>
-        <repository>
-            <id>rdc-releases</id>
-            <name>rdc Releases</name>
-            <url>https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>
-        </repository>
-        <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <name>rdc Snapshots</name>
-            <url>https://packages.aliyun.com/maven/repository/2122710-snapshot-ZBo1Xu/</url>
-        </snapshotRepository>
-    </distributionManagement>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>rdc</id>-->
+<!--            <name>rdc</name>-->
+<!--            <url>https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>rdc-releases</id>-->
+<!--            <name>rdc Releases</name>-->
+<!--            <url>https://packages.aliyun.com/maven/repository/2122710-release-poaaQp/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>rdc-snapshots</id>-->
+<!--            <name>rdc Snapshots</name>-->
+<!--            <url>https://packages.aliyun.com/maven/repository/2122710-snapshot-ZBo1Xu/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 
 </project>
