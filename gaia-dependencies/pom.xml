@@ -6,6 +6,7 @@
     <groupId>org.bravo</groupId>
     <artifactId>gaia-dependencies</artifactId>
     <version>${revision}</version>
+    <packaging>pom</packaging>
 
     <properties>
         <revision>2.0.1-SNAPSHOT</revision>
