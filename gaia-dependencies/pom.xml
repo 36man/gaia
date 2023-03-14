@@ -12,8 +12,7 @@
         <revision>2.0.1-SNAPSHOT</revision>
 
         <spring.boot.version>2.6.9</spring.boot.version>
-        <mybatis.plus.starter.version>3.5.2</mybatis.plus.starter.version>
-
+        <mybatis.plus.starter.version>3.5.3.1</mybatis.plus.starter.version>
         <vesta.version>0.0.1</vesta.version>
         <dubbo.version>3.0.7</dubbo.version>
 
